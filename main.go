@@ -10,12 +10,12 @@ type StrTuple struct {
 
 // TinyStrMap is the str/str interface for TinyStrMap
 type TinyStrMap struct {
-	Slice []StrTuple
+	data []StrTuple
 }
 
-// Get fetches the StrTuple.Val from the TinyStrMap Slice
+// Get fetches the StrTuple.Val from the TinyStrMap data
 func (t TinyStrMap) Get(key string) (string, bool) {
-	for _, StrTuple := range t.Slice {
+	for _, StrTuple := range t.data {
 		if StrTuple.Key == key {
 			return StrTuple.Val, true
 		}
@@ -24,14 +24,14 @@ func (t TinyStrMap) Get(key string) (string, bool) {
 	return "", false
 }
 
-// Set appends a new StrTuple to the Slice Slice
+// Set appends a new StrTuple to the data data
 func (t *TinyStrMap) Set(key string, val string) bool {
-	for i, StrTuple := range t.Slice {
+	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
 			StrTuple.Val = val
 
 			// assign element by index the updated StrTuple
-			t.Slice[i] = StrTuple
+			t.data[i] = StrTuple
 
 			return true
 		}
@@ -39,19 +39,19 @@ func (t *TinyStrMap) Set(key string, val string) bool {
 
 	StrTuple := StrTuple{Key: key, Val: val}
 
-	t.Slice = append(t.Slice, StrTuple)
+	t.data = append(t.data, StrTuple)
 
 	return true
 }
 
-// Delete removes the StrTuple from t.Slice
+// Delete removes the StrTuple from t.data
 func (t *TinyStrMap) Delete(key string) bool {
-	for i, StrTuple := range t.Slice {
+	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
-			// deleting from a Slice is always fun
-			t.Slice[i] = t.Slice[len(t.Slice)-1]
-			t.Slice[len(t.Slice)-1] = StrTuple
-			t.Slice = t.Slice[:len(t.Slice)-1]
+			// deleting from a data is always fun
+			t.data[i] = t.data[len(t.data)-1]
+			t.data[len(t.data)-1] = StrTuple
+			t.data = t.data[:len(t.data)-1]
 
 			return true
 		}
