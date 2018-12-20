@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package tinymap
 
 // StrTuple is a basic struct that holds a key and a value
 type StrTuple struct {
@@ -58,20 +56,4 @@ func (t *TinyStrMap) Delete(key string) bool {
 	}
 
 	return false
-}
-
-func main() {
-	t := new(TinyStrMap)
-
-	t.Set("wow", "omg")
-	a, b := t.Get("wow")
-	fmt.Println(a, b)
-
-	t.Set("wow", "lol")
-	aa, bb := t.Get("wow")
-	fmt.Println(aa, bb)
-
-	t.Delete("wow")
-	_, bbb := t.Get("wow")
-	fmt.Println(bbb)
 }
