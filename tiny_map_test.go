@@ -18,7 +18,7 @@ func TestTinyStrMap_Get(t *testing.T) {
 	}
 }
 
-func Benchmark_Get_Single(b *testing.B) {
+func Benchmark_Get_Single_Lower_Bound(b *testing.B) {
 	tinyStrMap := new(TinyStrMap)
 
 	tinyStrMap.Set("a", "_")
@@ -28,16 +28,14 @@ func Benchmark_Get_Single(b *testing.B) {
 	}
 }
 
-func Benchmark_Get_Multiple(b *testing.B) {
+func Benchmark_Get_Max_Size_Upper_Bound(b *testing.B) {
 	tinyStrMap := new(TinyStrMap)
 
-	tinyStrMap.Set("z", "_")
-	tinyStrMap.Set("f", "_")
-	tinyStrMap.Set("v", "_")
-	tinyStrMap.Set("t", "_")
+	for i := 0; i < 100; i++ {
+		tinyStrMap.Set(string(i), "_")
+	}
+
 	tinyStrMap.Set("a", "_")
-	tinyStrMap.Set("j", "_")
-	tinyStrMap.Set("x", "_")
 
 	for n := 0; n < b.N; n++ {
 		tinyStrMap.Get("a")
