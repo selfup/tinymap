@@ -46,7 +46,6 @@ func (t *TinyStrMap) Set(key string, val string) bool {
 func (t *TinyStrMap) Delete(key string) bool {
 	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
-			// deleting from a data is always fun
 			t.data[i] = t.data[len(t.data)-1]
 			t.data[len(t.data)-1] = StrTuple
 			t.data = t.data[:len(t.data)-1]
