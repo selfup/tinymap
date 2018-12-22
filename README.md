@@ -16,7 +16,7 @@ tinyStrMap.Delete("a") // => bool
 
 On Windows:
 
-```
+```ocaml
 $ ./scripts/bench.sh
 goos: windows
 goarch: amd64
