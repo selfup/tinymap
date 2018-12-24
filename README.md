@@ -52,6 +52,6 @@ Clearly using an int as an index is fastest for lookups/comparisons.
 
 Upper Bound means the value being grabbed is the 100th element in a slice of 100 elements.
 
-I have not yet added a catch block to prevent the slice to grow, but this should be used for small data sotrage :pray:
+Under the hood TinyMap uses slices.
 
-Under the hood TinyMap uses slices. Arrays could be used next if performance becomes an issue :smile:
+I have not yet added a catch block to prevent the slice to grow, but this should be used for small data sotrage :pray:
