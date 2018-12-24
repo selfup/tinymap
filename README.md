@@ -15,7 +15,7 @@ tinyStrMap.Delete("foo") // => bool : true
 
 // int/int map
 
-tinyStrMap := new(TinyIntMap)
+tinyIntMap := new(TinyIntMap)
 
 tinyIntMap.Set(42, 9000) // => bool : true
 tinyIntMap.Get(42) // => int, bool : 9000, true
