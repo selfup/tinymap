@@ -5,11 +5,29 @@
 ### Basic usage
 
 ```go
+// string/string map
+
 tinyStrMap := new(TinyStrMap)
 
-tinyStrMap.Set("a", "_") // => bool
-tinyStrMap.Get("a") // => string, bool
-tinyStrMap.Delete("a") // => bool
+tinyStrMap.Set("foo", "bar") // => bool : true
+tinyStrMap.Get("foo") // => string, bool : "bar", true
+tinyStrMap.Delete("foo") // => bool : true
+
+// int/int map
+
+tinyStrMap := new(TinyIntMap)
+
+tinyIntMap.Set(42, 9000) // => bool : true
+tinyIntMap.Get(42) // => int, bool : 9000, true
+tinyIntMap.Delete(42) // => bool : true
+
+// int/[]byte map
+
+tinyByteMap := new(TinyByteMap)
+
+tinyByteMap.Set(42, []byte("9000")) // => bool : true
+tinyByteMap.Get(42) // => []byte, bool : ["9", "0", "0", "0"], true
+tinyByteMap.Delete(42) // => bool
 ```
 
 ### Benchmarks
@@ -30,7 +48,9 @@ PASS
 ok      github.com/selfup/tiny_map      12.938s
 ```
 
-Upper Bound means the value being grabbed is the 100th element in a slice. So 333 ns/op is the constant lookup time for the last element you have included.
+Clearly using an int as an index is fastest for lookups/comparisons.
+
+Upper Bound means the value being grabbed is the 100th element in a slice of 100 elements.
 
 I have not yet added a catch block to prevent the slice to grow, but this should be used for small data sotrage :pray:
 
