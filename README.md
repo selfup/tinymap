@@ -2,6 +2,11 @@
 
 # Tiny Map!
 
+Package tinymap provides a simple to use interface that behaves like a HashMap.
+Multiple "Maps" are exposed for use as well as structs that behave like "Tuples".
+This package is intended to be used with tinygo, but has some nice little structs.
+Feel free to use this as you wish. It is very small, but helps with embedded programming.
+
 :tada:
 
 ### Basic usage
@@ -50,10 +55,10 @@ PASS
 ok      github.com/selfup/tiny_map      12.938s
 ```
 
-Clearly using an int as an index is fastest for lookups/comparisons.
+Using an int as an index is fastest for lookups/comparisons.
 
 Upper Bound means the value being grabbed is the 100th element in a slice of 100 elements.
 
-Under the hood TinyMap uses slices.
+Under the hood TinyMap uses slices to store Tuples.
 
 I have not yet added a catch block to prevent the slice to grow, but this should be used for small data sotrage :pray:
