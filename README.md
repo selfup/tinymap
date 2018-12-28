@@ -1,4 +1,5 @@
 [![GoDoc](https://godoc.org/github.com/selfup/tiny_map?status.svg)](https://godoc.org/github.com/selfup/tiny_map)
+[![Build Status](https://travis-ci.org/selfup/tiny_map.svg?branch=master)](https://travis-ci.org/selfup/tiny_map)
 
 # Tiny Map!
 
