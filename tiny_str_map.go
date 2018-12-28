@@ -1,28 +1,59 @@
 package tinymap
 
-// StrTuple is a basic struct that holds a key and a value
+import (
+	"errors"
+	"fmt"
+)
+
+// StrTuple is a basic struct that holds an string Key and a string Val
+//
+// It is exposed in case a user just needs a simple tuple :)
+//
+//  StrTuple{Key: "foo", Val: "bar"}
 type StrTuple struct {
 	Key string
 	Val string
 }
 
-// TinyStrMap is the str/str interface for TinyStrMap
+// TinyStrMap stores StrTuples
+//
+// It behaves like a HashMap!
+//
+//  tinyStrMap := new(TinyStrMap)
+//  tinyStrMap.Set("foo", "bar")
+//  val, err := tinyByteMap.Get("foo")
+//
+//  if err != nil {
+//    log.Fatal(err)
+//  }
+//
+//  fmt.Print(val)
+//
+//  tinyStrMap.Delete(42)
 type TinyStrMap struct {
 	data []StrTuple
 }
 
-// Get fetches the StrTuple.Val from the TinyStrMap data
-func (t TinyStrMap) Get(key string) (string, bool) {
+// Get fetches the StrTuple.Val when given a string key
+func (t TinyStrMap) Get(key string) (string, error) {
 	for _, StrTuple := range t.data {
 		if StrTuple.Key == key {
-			return StrTuple.Val, true
+			return StrTuple.Val, nil
 		}
 	}
 
-	return "", false
+	var errVal string
+	errMsg := fmt.Sprintf("No such key (%s) - string default returned", key)
+	err := errors.New(errMsg)
+
+	return errVal, err
 }
 
-// Set appends a new StrTuple to the data data
+// Set will update or add data based on existence of a string key
+//
+// If StrTuple.Key already exists, only the StrTuple.Val is updated
+//
+// Otherwise a new StrTuple is inserted into the data slice
 func (t *TinyStrMap) Set(key string, val string) bool {
 	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
@@ -43,6 +74,10 @@ func (t *TinyStrMap) Set(key string, val string) bool {
 }
 
 // Delete removes the StrTuple from t.data
+//
+// Returns true if deleted
+//
+// Returns false if the key was not found
 func (t *TinyStrMap) Delete(key string) bool {
 	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {

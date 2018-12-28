@@ -7,14 +7,14 @@ import (
 func Test_TinyStrMap_Get(t *testing.T) {
 	tinyStrMap := new(TinyStrMap)
 
-	result, found := tinyStrMap.Get("a")
+	result, err := tinyStrMap.Get("a")
 
 	if result != "" {
-		t.Errorf("failed to return an empty string on the first result")
+		t.Errorf("failed to return string default")
 	}
 
-	if found != false {
-		t.Errorf("failed to return false on the second result")
+	if err == nil {
+		t.Errorf("Get without known key should have failed")
 	}
 }
 

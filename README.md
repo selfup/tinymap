@@ -19,25 +19,25 @@ Or run godoc locally:
 
 tinyStrMap := new(TinyStrMap)
 
-tinyStrMap.Set("foo", "bar") // => bool : true
-tinyStrMap.Get("foo") // => string, bool : "bar", true
-tinyStrMap.Delete("foo") // => bool : true
+tinyStrMap.Set("foo", "bar")
+tinyStrMap.Get("foo")
+tinyStrMap.Delete("foo")
 
 // int/int map
 
 tinyIntMap := new(TinyIntMap)
 
-tinyIntMap.Set(42, 9000) // => bool : true
-tinyIntMap.Get(42) // => int, bool : 9000, true
-tinyIntMap.Delete(42) // => bool : true
+tinyIntMap.Set(42, 9000)
+tinyIntMap.Get(42)
+tinyIntMap.Delete(42)
 
 // int/[]byte map
 
 tinyByteMap := new(TinyByteMap)
 
-tinyByteMap.Set(42, []byte("9000")) // => bool : true
-tinyByteMap.Get(42) // => []byte, bool : ["9", "0", "0", "0"], true
-tinyByteMap.Delete(42) // => bool
+tinyByteMap.Set(42, []byte("9000"))
+tinyByteMap.Get(42)
+tinyByteMap.Delete(42)
 ```
 
 ### Benchmarks
