@@ -32,7 +32,7 @@ type TinyByteMap struct {
 	data []ByteTuple
 }
 
-// Get fetches the ByteTuple.Val when given an int key
+// Get fetches data.
 func (t TinyByteMap) Get(key int) ([]byte, error) {
 	for _, ByteTuple := range t.data {
 		if ByteTuple.Key == key {
@@ -47,9 +47,9 @@ func (t TinyByteMap) Get(key int) ([]byte, error) {
 	return errByte, err
 }
 
-// Set will update or add data based on existence of an int key
-// If ByteTuple.Key already exists, only the ByteTuple.Val is updated
-// Otherwise a new ByteTuple is inserted into the data slice
+// Set will update or add data.
+// If ByteTuple.Key already exists, only the ByteTuple.Val is updated.
+// Otherwise a new ByteTuple is inserted into the data slice.
 func (t *TinyByteMap) Set(key int, val []byte) {
 	for i, ByteTuple := range t.data {
 		if ByteTuple.Key == key {
@@ -65,9 +65,9 @@ func (t *TinyByteMap) Set(key int, val []byte) {
 	t.data = append(t.data, ByteTuple)
 }
 
-// Delete removes the ByteTuple from t.data
-// Returns true if deleted
-// Returns false if the key was not found
+// Delete removes data.
+// Returns true if deleted.
+// Returns false if the key was not found.
 func (t *TinyByteMap) Delete(key int) bool {
 	for i, ByteTuple := range t.data {
 		if ByteTuple.Key == key {

@@ -32,7 +32,7 @@ type TinyIntMap struct {
 	data []IntTuple
 }
 
-// Get fetches the IntTuple.Val when given an int key
+// Get fetches data
 func (t TinyIntMap) Get(key int) (int, error) {
 	for _, IntTuple := range t.data {
 		if IntTuple.Key == key {
@@ -47,9 +47,9 @@ func (t TinyIntMap) Get(key int) (int, error) {
 	return errVal, err
 }
 
-// Set will update or add data based on existence of an int key
-// If IntTuple.Key already exists, only the IntTuple.Val is updated
-// Otherwise a new IntTuple is inserted into the data slice
+// Set will update or add data.
+// If IntTuple.Key already exists, only the IntTuple.Val is updated.
+// Otherwise a new IntTuple is inserted into the data slice.
 func (t *TinyIntMap) Set(key int, val int) bool {
 	for i, IntTuple := range t.data {
 		if IntTuple.Key == key {
@@ -69,9 +69,9 @@ func (t *TinyIntMap) Set(key int, val int) bool {
 	return true
 }
 
-// Delete removes the IntTuple from t.data
-// Returns true if deleted
-// Returns false if the key was not found
+// Delete removes data.
+// Returns true if deleted.
+// Returns false if the key was not found.
 func (t *TinyIntMap) Delete(key int) bool {
 	for i, IntTuple := range t.data {
 		if IntTuple.Key == key {

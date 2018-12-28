@@ -32,7 +32,7 @@ type TinyStrMap struct {
 	data []StrTuple
 }
 
-// Get fetches the StrTuple.Val when given a string key
+// Get fetches data
 func (t TinyStrMap) Get(key string) (string, error) {
 	for _, StrTuple := range t.data {
 		if StrTuple.Key == key {
@@ -47,9 +47,9 @@ func (t TinyStrMap) Get(key string) (string, error) {
 	return errVal, err
 }
 
-// Set will update or add data based on existence of a string key
-// If StrTuple.Key already exists, only the StrTuple.Val is updated
-// Otherwise a new StrTuple is inserted into the data slice
+// Set will update or add data.
+// If StrTuple.Key already exists, only the StrTuple.Val is updated.
+// Otherwise a new StrTuple is inserted into the data slice.
 func (t *TinyStrMap) Set(key string, val string) bool {
 	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
@@ -69,9 +69,9 @@ func (t *TinyStrMap) Set(key string, val string) bool {
 	return true
 }
 
-// Delete removes the StrTuple from t.data
-// Returns true if deleted
-// Returns false if the key was not found
+// Delete removes data.
+// Returns true if deleted.
+// Returns false if the key was not found.
 func (t *TinyStrMap) Delete(key string) bool {
 	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
