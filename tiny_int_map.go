@@ -5,9 +5,7 @@ import (
 	"fmt"
 )
 
-// IntTuple is a basic struct that holds an string Key and a string Val
-//
-// It is exposed in case a user just needs a simple tuple :)
+// IntTuple is a basic struct
 //
 //  IntTuple{Key: "foo", Val: "bar"}
 type IntTuple struct {
@@ -50,9 +48,7 @@ func (t TinyIntMap) Get(key int) (int, error) {
 }
 
 // Set will update or add data based on existence of an int key
-//
 // If IntTuple.Key already exists, only the IntTuple.Val is updated
-//
 // Otherwise a new IntTuple is inserted into the data slice
 func (t *TinyIntMap) Set(key int, val int) bool {
 	for i, IntTuple := range t.data {
@@ -74,9 +70,7 @@ func (t *TinyIntMap) Set(key int, val int) bool {
 }
 
 // Delete removes the IntTuple from t.data
-//
 // Returns true if deleted
-//
 // Returns false if the key was not found
 func (t *TinyIntMap) Delete(key int) bool {
 	for i, IntTuple := range t.data {

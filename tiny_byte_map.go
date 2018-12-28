@@ -5,9 +5,7 @@ import (
 	"fmt"
 )
 
-// ByteTuple is a basic struct that holds an int key and a []byte value
-//
-// It is exposed in case a user just needs a simple tuple :)
+// ByteTuple is a basic struct
 //
 //  ByteTuple{Key: 42, Val: []byte("FEFEFD")}
 type ByteTuple struct {
@@ -50,9 +48,7 @@ func (t TinyByteMap) Get(key int) ([]byte, error) {
 }
 
 // Set will update or add data based on existence of an int key
-//
 // If ByteTuple.Key already exists, only the ByteTuple.Val is updated
-//
 // Otherwise a new ByteTuple is inserted into the data slice
 func (t *TinyByteMap) Set(key int, val []byte) {
 	for i, ByteTuple := range t.data {
@@ -70,9 +66,7 @@ func (t *TinyByteMap) Set(key int, val []byte) {
 }
 
 // Delete removes the ByteTuple from t.data
-//
 // Returns true if deleted
-//
 // Returns false if the key was not found
 func (t *TinyByteMap) Delete(key int) bool {
 	for i, ByteTuple := range t.data {

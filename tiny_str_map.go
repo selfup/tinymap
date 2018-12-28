@@ -5,9 +5,7 @@ import (
 	"fmt"
 )
 
-// StrTuple is a basic struct that holds an string Key and a string Val
-//
-// It is exposed in case a user just needs a simple tuple :)
+// StrTuple is a basic struct
 //
 //  StrTuple{Key: "foo", Val: "bar"}
 type StrTuple struct {
@@ -50,9 +48,7 @@ func (t TinyStrMap) Get(key string) (string, error) {
 }
 
 // Set will update or add data based on existence of a string key
-//
 // If StrTuple.Key already exists, only the StrTuple.Val is updated
-//
 // Otherwise a new StrTuple is inserted into the data slice
 func (t *TinyStrMap) Set(key string, val string) bool {
 	for i, StrTuple := range t.data {
@@ -74,9 +70,7 @@ func (t *TinyStrMap) Set(key string, val string) bool {
 }
 
 // Delete removes the StrTuple from t.data
-//
 // Returns true if deleted
-//
 // Returns false if the key was not found
 func (t *TinyStrMap) Delete(key string) bool {
 	for i, StrTuple := range t.data {
