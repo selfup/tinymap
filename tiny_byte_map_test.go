@@ -7,10 +7,10 @@ import (
 func Test_tinyByteMap_Get(t *testing.T) {
 	tinyByteMap := new(TinyByteMap)
 
-	_, found := tinyByteMap.Get(1)
+	_, err := tinyByteMap.Get(1)
 
-	if found != false {
-		t.Errorf("failed to return false on the second result")
+	if err == nil {
+		t.Errorf("Get without known key should have failed")
 	}
 }
 
