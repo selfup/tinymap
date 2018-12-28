@@ -1,16 +1,8 @@
+[![GoDoc](https://godoc.org/github.com/selfup/tiny_map?status.svg)](https://godoc.org/github.com/selfup/tiny_map)
+
 # Tiny Map!
 
 :tada:
-
-### Docs
-
-Docs can be found here: https://godoc.org/github.com/selfup/tiny_map
-
-Or run godoc locally:
-
-1. Make sure to clone in the appropriate namespace: `$GOPATH/github.com/selfup/tiny_map`
-1. Spin up godoc server: `godoc -http=localhost:8080`
-1. Visit: http://localhost:8080/pkg/github.com/selfup/tiny_map/
 
 ### Basic usage
 
