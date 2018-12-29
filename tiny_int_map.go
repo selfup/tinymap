@@ -7,13 +7,13 @@ import (
 
 // IntTuple is a basic struct
 //
-//  IntTuple{Key: "foo", Val: "bar"}
+//  IntTuple{Key: 42, Val: 9000}
 type IntTuple struct {
 	Key int
 	Val int
 }
 
-// IntMap stores StrTuples
+// IntMap stores IntTuples
 //
 // It behaves like a HashMap!
 //

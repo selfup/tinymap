@@ -7,7 +7,7 @@ import (
 
 // ByteTuple is a basic struct
 //
-//  ByteTuple{Key: 42, Val: []byte("FEFEFD")}
+//  ByteTuple{Key: 42, Val: []byte("9000")}
 type ByteTuple struct {
 	Key int
 	Val []byte
