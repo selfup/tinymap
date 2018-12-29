@@ -1,11 +1,11 @@
-[![GoDoc](https://godoc.org/github.com/selfup/tiny_map?status.svg)](https://godoc.org/github.com/selfup/tiny_map)
-[![Build Status](https://travis-ci.org/selfup/tiny_map.svg?branch=master)](https://travis-ci.org/selfup/tiny_map)
+[![GoDoc](https://godoc.org/github.com/selfup/tinymap?status.svg)](https://godoc.org/github.com/selfup/tinymap)
+[![Build Status](https://travis-ci.org/selfup/tinymap.svg?branch=master)](https://travis-ci.org/selfup/tinymap)
 
-# Tiny Map!
+# tinymap
 
-Package tinymap provides a simple to use interface that behaves like a HashMap.
-Multiple "Maps" are exposed for use as well as structs that behave like "Tuples".
-This package is intended to be used with tinygo, but has some nice little structs.
+Package `tinymap` provides a simple to use interface that behaves like a `HashMap`.
+Multiple `Maps` are exposed for use as well as structs that behave like `Tuples`.
+This package is intended to be used with `tinygo`, but has some nice little structs.
 Feel free to use this as you wish. It is very small, but helps with embedded programming.
 
 :tada:
@@ -41,11 +41,11 @@ byteMap.Delete(42)
 ### Benchmarks
 
 ```ocaml
-tiny_map (master) $ ./scripts/bench.sh
+tinymap (master) $ ./scripts/bench.sh
 + go test -bench=.
 goos: linux
 goarch: amd64
-pkg: github.com/selfup/tiny_map
+pkg: github.com/selfup/tinymap
 Benchmark_ByteMap_Get_Single_Lower_Bound-8          1000000000               2.83 ns/op
 Benchmark_ByteMap_Get_Max_Size_Upper_Bound-8        20000000                85.8 ns/op
 Benchmark_IntMap_Get_Single_Lower_Bound-8           1000000000               2.04 ns/op
@@ -53,7 +53,7 @@ Benchmark_IntMap_Get_Max_Size_Upper_Bound-8         30000000                46.0
 Benchmark_StrMap_Get_Single_Lower_Bound-8           300000000                5.08 ns/op
 Benchmark_StrMap_Get_Max_Size_Upper_Bound-8          5000000               374 ns/op
 PASS
-ok      github.com/selfup/tiny_map      12.938s
+ok      github.com/selfup/tinymap      12.938s
 
 ---
 
