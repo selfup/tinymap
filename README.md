@@ -77,10 +77,9 @@ PASS
 ok      github.com/selfup/tinymap       13.517s
 ```
 
-Using an int as an index is fastest for lookups/comparisons.
+### Details
 
-Upper Bound means the value being grabbed is the 100th element in a slice of 100 elements.
-
-Under the hood TinyMap uses slices to store Tuples.
-
-I have not yet added a catch block to prevent the slice to grow, but this should be used for small data sotrage :pray:
+1. Using an int as an index is fastest for lookups/comparisons.
+1. Upper Bound means the value being grabbed is the 100th element in a slice of 100 elements.
+1. Under the hood TinyMap uses slices to store Tuples.
+1. I have not yet added a catch block to prevent the slice to grow, but this should be used for small data sotrage :pray:
