@@ -13,13 +13,13 @@ type StrTuple struct {
 	Val string
 }
 
-// TinyStrMap stores StrTuples
+// StrMap stores StrTuples
 //
 // It behaves like a HashMap!
 //
-//  tinyStrMap := new(TinyStrMap)
-//  tinyStrMap.Set("foo", "bar")
-//  val, err := tinyByteMap.Get("foo")
+//  strMap := new(StrMap)
+//  strMap.Set("foo", "bar")
+//  val, err := byteMap.Get("foo")
 //
 //  if err != nil {
 //    log.Fatal(err)
@@ -27,13 +27,13 @@ type StrTuple struct {
 //
 //  fmt.Print(val)
 //
-//  tinyStrMap.Delete(42)
-type TinyStrMap struct {
+//  strMap.Delete(42)
+type StrMap struct {
 	data []StrTuple
 }
 
 // Get fetches data
-func (t TinyStrMap) Get(key string) (string, error) {
+func (t StrMap) Get(key string) (string, error) {
 	for _, StrTuple := range t.data {
 		if StrTuple.Key == key {
 			return StrTuple.Val, nil
@@ -50,7 +50,7 @@ func (t TinyStrMap) Get(key string) (string, error) {
 // Set will update or add data.
 // If StrTuple.Key already exists, only the StrTuple.Val is updated.
 // Otherwise a new StrTuple is inserted into the data slice.
-func (t *TinyStrMap) Set(key string, val string) bool {
+func (t *StrMap) Set(key string, val string) bool {
 	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
 			StrTuple.Val = val
@@ -72,7 +72,7 @@ func (t *TinyStrMap) Set(key string, val string) bool {
 // Delete removes data.
 // Returns true if deleted.
 // Returns false if the key was not found.
-func (t *TinyStrMap) Delete(key string) bool {
+func (t *StrMap) Delete(key string) bool {
 	for i, StrTuple := range t.data {
 		if StrTuple.Key == key {
 			t.data[i] = t.data[len(t.data)-1]

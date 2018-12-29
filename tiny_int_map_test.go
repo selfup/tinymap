@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-func Test_TinyIntMap_Get(t *testing.T) {
-	tinyIntMap := new(TinyIntMap)
+func Test_IntMap_Get(t *testing.T) {
+	intMap := new(IntMap)
 
-	result, err := tinyIntMap.Get(1)
+	result, err := intMap.Get(1)
 
 	if result != 0 {
 		t.Errorf("failed to return int default")
@@ -18,26 +18,26 @@ func Test_TinyIntMap_Get(t *testing.T) {
 	}
 }
 
-func Benchmark_TinyIntMap_Get_Single_Lower_Bound(b *testing.B) {
-	tinyIntMap := new(TinyIntMap)
+func Benchmark_IntMap_Get_Single_Lower_Bound(b *testing.B) {
+	intMap := new(IntMap)
 
-	tinyIntMap.Set(1, 00011000)
+	intMap.Set(1, 00011000)
 
 	for n := 0; n < b.N; n++ {
-		tinyIntMap.Get(1)
+		intMap.Get(1)
 	}
 }
 
-func Benchmark_TinyIntMap_Get_Max_Size_Upper_Bound(b *testing.B) {
-	tinyIntMap := new(TinyIntMap)
+func Benchmark_IntMap_Get_Max_Size_Upper_Bound(b *testing.B) {
+	intMap := new(IntMap)
 
 	upperBound := 100
 
 	for i := 0; i < upperBound; i++ {
-		tinyIntMap.Set(i, i)
+		intMap.Set(i, i)
 	}
 
 	for n := 0; n < b.N; n++ {
-		tinyIntMap.Get(upperBound)
+		intMap.Get(upperBound)
 	}
 }

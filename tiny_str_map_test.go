@@ -4,10 +4,10 @@ import (
 	"testing"
 )
 
-func Test_TinyStrMap_Get(t *testing.T) {
-	tinyStrMap := new(TinyStrMap)
+func Test_StrMap_Get(t *testing.T) {
+	strMap := new(StrMap)
 
-	result, err := tinyStrMap.Get("a")
+	result, err := strMap.Get("a")
 
 	if result != "" {
 		t.Errorf("failed to return string default")
@@ -18,26 +18,26 @@ func Test_TinyStrMap_Get(t *testing.T) {
 	}
 }
 
-func Benchmark_TinyStrMap_Get_Single_Lower_Bound(b *testing.B) {
-	tinyStrMap := new(TinyStrMap)
+func Benchmark_StrMap_Get_Single_Lower_Bound(b *testing.B) {
+	strMap := new(StrMap)
 
-	tinyStrMap.Set("a", "_")
+	strMap.Set("a", "_")
 
 	for n := 0; n < b.N; n++ {
-		tinyStrMap.Get("a")
+		strMap.Get("a")
 	}
 }
 
-func Benchmark_TinyStrMap_Get_Max_Size_Upper_Bound(b *testing.B) {
-	tinyStrMap := new(TinyStrMap)
+func Benchmark_StrMap_Get_Max_Size_Upper_Bound(b *testing.B) {
+	strMap := new(StrMap)
 
 	for i := 0; i < 100; i++ {
-		tinyStrMap.Set(string(i), "_")
+		strMap.Set(string(i), "_")
 	}
 
-	tinyStrMap.Set("a", "_")
+	strMap.Set("a", "_")
 
 	for n := 0; n < b.N; n++ {
-		tinyStrMap.Get("a")
+		strMap.Get("a")
 	}
 }
