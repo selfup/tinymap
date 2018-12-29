@@ -29,12 +29,13 @@ type StrTuple struct {
 //
 //  strMap.Delete(42)
 type StrMap struct {
-	data []StrTuple
+	// Data is public but use carefully :)
+	Data []StrTuple
 }
 
-// Get fetches data
+// Get fetches Tuples by Key and returns their Val
 func (t StrMap) Get(key string) (string, error) {
-	for _, StrTuple := range t.data {
+	for _, StrTuple := range t.Data {
 		if StrTuple.Key == key {
 			return StrTuple.Val, nil
 		}
@@ -47,16 +48,15 @@ func (t StrMap) Get(key string) (string, error) {
 	return errVal, err
 }
 
-// Set will update or add data.
+// Set will update or add Tuples.
 // If StrTuple.Key already exists, only the StrTuple.Val is updated.
-// Otherwise a new StrTuple is inserted into the data slice.
+// Otherwise a new StrTuple is inserted into the Data slice.
 func (t *StrMap) Set(key string, val string) bool {
-	for i, StrTuple := range t.data {
+	for i, StrTuple := range t.Data {
 		if StrTuple.Key == key {
 			StrTuple.Val = val
 
-			// assign element by index the updated StrTuple
-			t.data[i] = StrTuple
+			t.Data[i] = StrTuple
 
 			return true
 		}
@@ -64,20 +64,20 @@ func (t *StrMap) Set(key string, val string) bool {
 
 	StrTuple := StrTuple{Key: key, Val: val}
 
-	t.data = append(t.data, StrTuple)
+	t.Data = append(t.Data, StrTuple)
 
 	return true
 }
 
-// Delete removes data.
+// Delete removes Tuples.
 // Returns true if deleted.
 // Returns false if the key was not found.
 func (t *StrMap) Delete(key string) bool {
-	for i, StrTuple := range t.data {
+	for i, StrTuple := range t.Data {
 		if StrTuple.Key == key {
-			t.data[i] = t.data[len(t.data)-1]
-			t.data[len(t.data)-1] = StrTuple
-			t.data = t.data[:len(t.data)-1]
+			t.Data[i] = t.Data[len(t.Data)-1]
+			t.Data[len(t.Data)-1] = StrTuple
+			t.Data = t.Data[:len(t.Data)-1]
 
 			return true
 		}

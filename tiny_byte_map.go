@@ -1,15 +1,16 @@
 package tinymap
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 )
 
 // ByteTuple is a basic struct
 //
-//  ByteTuple{Key: 42, Val: []byte("9000")}
+//  ByteTuple{Key: []byte("42"), Val: []byte("9000")}
 type ByteTuple struct {
-	Key int
+	Key []byte
 	Val []byte
 }
 
@@ -18,8 +19,8 @@ type ByteTuple struct {
 // It behaves like a HashMap!
 //
 //  byteMap := new(ByteMap)
-//  byteMap.Set(42, []byte("9000"))
-//  val, err := byteMap.Get(42)
+//  byteMap.Set([]byte("42"), []byte("9000"))
+//  val, err := byteMap.Get([]byte("42"))
 //
 //  if err != nil {
 //    log.Fatal(err)
@@ -27,15 +28,16 @@ type ByteTuple struct {
 //
 //  fmt.Print(val)
 //
-//  byteMap.Delete(42)
+//  byteMap.Delete([]byte("42"))
 type ByteMap struct {
-	data []ByteTuple
+	// Data is public but use carefully :)
+	Data []ByteTuple
 }
 
-// Get fetches data.
-func (t ByteMap) Get(key int) ([]byte, error) {
-	for _, ByteTuple := range t.data {
-		if ByteTuple.Key == key {
+// Get fetches Tuples by Key and returns their Val.
+func (t ByteMap) Get(key []byte) ([]byte, error) {
+	for _, ByteTuple := range t.Data {
+		if bytes.Equal(ByteTuple.Key, key) {
 			return ByteTuple.Val, nil
 		}
 	}
@@ -47,33 +49,32 @@ func (t ByteMap) Get(key int) ([]byte, error) {
 	return errByte, err
 }
 
-// Set will update or add data.
+// Set will update or add Tuples.
 // If ByteTuple.Key already exists, only the ByteTuple.Val is updated.
-// Otherwise a new ByteTuple is inserted into the data slice.
-func (t *ByteMap) Set(key int, val []byte) {
-	for i, ByteTuple := range t.data {
-		if ByteTuple.Key == key {
+// Otherwise a new ByteTuple is inserted into the Data slice.
+func (t *ByteMap) Set(key []byte, val []byte) {
+	for i, ByteTuple := range t.Data {
+		if bytes.Equal(ByteTuple.Key, key) {
 			ByteTuple.Val = val
 
-			// assign element by index the updated ByteTuple
-			t.data[i] = ByteTuple
+			t.Data[i] = ByteTuple
 		}
 	}
 
 	ByteTuple := ByteTuple{Key: key, Val: val}
 
-	t.data = append(t.data, ByteTuple)
+	t.Data = append(t.Data, ByteTuple)
 }
 
-// Delete removes data.
+// Delete removes Tuples.
 // Returns true if deleted.
 // Returns false if the key was not found.
-func (t *ByteMap) Delete(key int) bool {
-	for i, ByteTuple := range t.data {
-		if ByteTuple.Key == key {
-			t.data[i] = t.data[len(t.data)-1]
-			t.data[len(t.data)-1] = ByteTuple
-			t.data = t.data[:len(t.data)-1]
+func (t *ByteMap) Delete(key []byte) bool {
+	for i, ByteTuple := range t.Data {
+		if bytes.Equal(ByteTuple.Key, key) {
+			t.Data[i] = t.Data[len(t.Data)-1]
+			t.Data[len(t.Data)-1] = ByteTuple
+			t.Data = t.Data[:len(t.Data)-1]
 
 			return true
 		}

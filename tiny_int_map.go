@@ -29,12 +29,13 @@ type IntTuple struct {
 //
 //  intMap.Delete(42)
 type IntMap struct {
-	data []IntTuple
+	// Data is public but use carefully :)
+	Data []IntTuple
 }
 
-// Get fetches data
+// Get fetches Tuples by Key and returns their Val
 func (t IntMap) Get(key int) (int, error) {
-	for _, IntTuple := range t.data {
+	for _, IntTuple := range t.Data {
 		if IntTuple.Key == key {
 			return IntTuple.Val, nil
 		}
@@ -47,16 +48,15 @@ func (t IntMap) Get(key int) (int, error) {
 	return errVal, err
 }
 
-// Set will update or add data.
+// Set will update or add Tuples.
 // If IntTuple.Key already exists, only the IntTuple.Val is updated.
-// Otherwise a new IntTuple is inserted into the data slice.
+// Otherwise a new IntTuple is inserted into the Data slice.
 func (t *IntMap) Set(key int, val int) bool {
-	for i, IntTuple := range t.data {
+	for i, IntTuple := range t.Data {
 		if IntTuple.Key == key {
 			IntTuple.Val = val
 
-			// assign element by index the updated IntTuple
-			t.data[i] = IntTuple
+			t.Data[i] = IntTuple
 
 			return true
 		}
@@ -64,20 +64,20 @@ func (t *IntMap) Set(key int, val int) bool {
 
 	IntTuple := IntTuple{Key: key, Val: val}
 
-	t.data = append(t.data, IntTuple)
+	t.Data = append(t.Data, IntTuple)
 
 	return true
 }
 
-// Delete removes data.
+// Delete removes Tuples.
 // Returns true if deleted.
 // Returns false if the key was not found.
 func (t *IntMap) Delete(key int) bool {
-	for i, IntTuple := range t.data {
+	for i, IntTuple := range t.Data {
 		if IntTuple.Key == key {
-			t.data[i] = t.data[len(t.data)-1]
-			t.data[len(t.data)-1] = IntTuple
-			t.data = t.data[:len(t.data)-1]
+			t.Data[i] = t.Data[len(t.Data)-1]
+			t.Data[len(t.Data)-1] = IntTuple
+			t.Data = t.Data[:len(t.Data)-1]
 
 			return true
 		}
