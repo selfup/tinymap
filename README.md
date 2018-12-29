@@ -30,21 +30,20 @@ strMap.Delete("foo")
 ### Benchmarks
 
 ````ocaml
-tinymap (master) $ ./scripts/bench.sh
 + go test -bench=.
 goos: linux
 goarch: amd64
 pkg: github.com/selfup/tinymap
-Benchmark_ByteMap_Get_Single_Lower_Bound-8              50000000                28.4 ns/op
-Benchmark_ByteMap_Get_Max_Size_Upper_Bound-8             2000000               778 ns/op
-Benchmark_IntMap_Get_Single_Lower_Bound-8               1000000000               2.66 ns/op
-Benchmark_IntMap_Get_Max_Size_Upper_Bound-8             100000000               19.0 ns/op
+Benchmark_ByteMap_Get_Single_Lower_Bound-8              50000000                29.2 ns/op
+Benchmark_ByteMap_Get_Max_Size_Upper_Bound-8             3000000               584 ns/op
+Benchmark_IntMap_Get_Single_Lower_Bound-8               1000000000               2.62 ns/op
+Benchmark_IntMap_Get_Max_Size_Upper_Bound-8             30000000                49.8 ns/op
 Benchmark_IntStrMap_Get_Single_Lower_Bound-8            1000000000               2.89 ns/op
-Benchmark_IntStrMap_Get_Max_Size_Upper_Bound-8          100000000               21.9 ns/op
+Benchmark_IntStrMap_Get_Max_Size_Upper_Bound-8          30000000                55.5 ns/op
 Benchmark_StrMap_Get_Single_Lower_Bound-8               300000000                5.49 ns/op
-Benchmark_StrMap_Get_Max_Size_Upper_Bound-8              5000000               378 ns/op
+Benchmark_StrMap_Get_Max_Size_Upper_Bound-8              3000000               397 ns/op
 PASS
-ok      github.com/selfup/tinymap       18.533s
+ok      github.com/selfup/tinymap       17.006s
 ```
 
 ### Details
