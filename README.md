@@ -29,7 +29,7 @@ strMap.Delete("foo")
 
 ### Benchmarks
 
-````ocaml
+```ocaml
 + go test -bench=.
 goos: linux
 goarch: amd64
@@ -53,4 +53,3 @@ ok      github.com/selfup/tinymap       17.006s
 1. Upper Bound means the value being grabbed is the 100th element in a slice of 100 elements.
 1. Under the hood TinyMap uses slices to store Tuples.
 1. I have not yet added a catch block to prevent the slice to grow, but this should be used for small data sotrage :pray:
-````
