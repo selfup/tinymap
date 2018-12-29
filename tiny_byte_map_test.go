@@ -4,36 +4,36 @@ import (
 	"testing"
 )
 
-func Test_tinyByteMap_Get(t *testing.T) {
-	tinyByteMap := new(TinyByteMap)
+func Test_byteMap_Get(t *testing.T) {
+	byteMap := new(ByteMap)
 
-	_, err := tinyByteMap.Get(1)
+	_, err := byteMap.Get(1)
 
 	if err == nil {
 		t.Errorf("Get without known key should have failed")
 	}
 }
 
-func Benchmark_TinyByteMap_Get_Single_Lower_Bound(b *testing.B) {
-	tinyByteMap := new(TinyByteMap)
+func Benchmark_ByteMap_Get_Single_Lower_Bound(b *testing.B) {
+	byteMap := new(ByteMap)
 
-	tinyByteMap.Set(1, []byte("bar"))
+	byteMap.Set(1, []byte("bar"))
 
 	for n := 0; n < b.N; n++ {
-		tinyByteMap.Get(1)
+		byteMap.Get(1)
 	}
 }
 
-func Benchmark_TinyByteMap_Get_Max_Size_Upper_Bound(b *testing.B) {
-	tinyByteMap := new(TinyByteMap)
+func Benchmark_ByteMap_Get_Max_Size_Upper_Bound(b *testing.B) {
+	byteMap := new(ByteMap)
 
 	upperBound := 100
 
 	for i := 0; i < upperBound; i++ {
-		tinyByteMap.Set(i, []byte(string(i)))
+		byteMap.Set(i, []byte(string(i)))
 	}
 
 	for n := 0; n < b.N; n++ {
-		tinyByteMap.Get(upperBound)
+		byteMap.Get(upperBound)
 	}
 }
