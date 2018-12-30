@@ -31,13 +31,16 @@ func Benchmark_StrMap_Get_Single_Lower_Bound(b *testing.B) {
 func Benchmark_StrMap_Get_Max_Size_Upper_Bound(b *testing.B) {
 	strMap := new(StrMap)
 
-	for i := 0; i < 100; i++ {
-		strMap.Set(string(i), "_")
+	upperBound := 100
+	upperBoundStr := string(upperBound)
+
+	for i := 0; i < upperBound; i++ {
+		strMap.Set(string(i), string(i))
 	}
 
-	strMap.Set("a", "_")
+	strMap.Set(upperBoundStr, upperBoundStr)
 
 	for n := 0; n < b.N; n++ {
-		strMap.Get("a")
+		strMap.Get(upperBoundStr)
 	}
 }
