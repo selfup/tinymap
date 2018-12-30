@@ -24,6 +24,20 @@ func Benchmark_ByteMap_Get_Single_Lower_Bound(b *testing.B) {
 	}
 }
 
+func Benchmark_ByteMap_Get_Expected_Size_Of_Five_Upper_Bound(b *testing.B) {
+	byteMap := new(ByteMap)
+
+	byteMap.Set([]byte("0"), []byte("8996"))
+	byteMap.Set([]byte("0"), []byte("8997"))
+	byteMap.Set([]byte("0"), []byte("8998"))
+	byteMap.Set([]byte("0"), []byte("8999"))
+	byteMap.Set([]byte("42"), []byte("9000"))
+
+	for n := 0; n < b.N; n++ {
+		byteMap.Get([]byte("42"))
+	}
+}
+
 func Benchmark_ByteMap_Get_Max_Size_Upper_Bound(b *testing.B) {
 	byteMap := new(ByteMap)
 

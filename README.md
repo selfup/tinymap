@@ -30,20 +30,25 @@ strMap.Delete("foo")
 ### Benchmarks
 
 ```ocaml
+$ ./scripts/bench.sh
 + go test -bench=.
-goos: linux
+goos: windows
 goarch: amd64
 pkg: github.com/selfup/tinymap
-Benchmark_ByteMap_Get_Single_Lower_Bound-8              50000000                29.2 ns/op
-Benchmark_ByteMap_Get_Max_Size_Upper_Bound-8             3000000               584 ns/op
-Benchmark_IntMap_Get_Single_Lower_Bound-8               1000000000               2.62 ns/op
-Benchmark_IntMap_Get_Max_Size_Upper_Bound-8             30000000                49.8 ns/op
-Benchmark_IntStrMap_Get_Single_Lower_Bound-8            1000000000               2.89 ns/op
-Benchmark_IntStrMap_Get_Max_Size_Upper_Bound-8          30000000                55.5 ns/op
-Benchmark_StrMap_Get_Single_Lower_Bound-8               300000000                5.49 ns/op
-Benchmark_StrMap_Get_Max_Size_Upper_Bound-8              3000000               397 ns/op
+Benchmark_ByteMap_Get_Single_Lower_Bound-4              50000000                25.3 ns/op
+Benchmark_ByteMap_Get_Single_Expected_Bound-4           30000000                40.7 ns/op
+Benchmark_ByteMap_Get_Max_Size_Upper_Bound-4             3000000               520 ns/op
+Benchmark_IntMap_Get_Single_Lower_Bound-4               1000000000               2.51 ns/op
+Benchmark_IntMap_Get_Single_Expected_Bound-4            300000000                4.36 ns/op
+Benchmark_IntMap_Get_Max_Size_Upper_Bound-4             30000000                44.2 ns/op
+Benchmark_IntStrMap_Get_Single_Lower_Bound-4            1000000000               2.70 ns/op
+Benchmark_IntStrMap_Get_Single_Expected_Bound-4         300000000                4.46 ns/op
+Benchmark_IntStrMap_Get_Max_Size_Upper_Bound-4          30000000                50.3 ns/op
+Benchmark_StrMap_Get_Single_Lower_Bound-4               300000000                4.85 ns/op
+Benchmark_StrMap_Get_Single_Expected_Bound-4            300000000                5.42 ns/op
+Benchmark_StrMap_Get_Max_Size_Upper_Bound-4              5000000               382 ns/op
 PASS
-ok      github.com/selfup/tinymap       17.006s
+ok      github.com/selfup/tinymap       24.219s
 ```
 
 ### Details
