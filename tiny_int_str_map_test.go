@@ -28,6 +28,20 @@ func Benchmark_IntStrMap_Get_Single_Lower_Bound(b *testing.B) {
 	}
 }
 
+func Benchmark_IntStrMap_Get_Expected_Size_Of_Five_Upper_Bound(b *testing.B) {
+	intStrMap := new(IntStrMap)
+
+	intStrMap.Set(0, "8996")
+	intStrMap.Set(1, "8997")
+	intStrMap.Set(2, "8998")
+	intStrMap.Set(3, "8999")
+	intStrMap.Set(42, "9000")
+
+	for n := 0; n < b.N; n++ {
+		intStrMap.Get(42)
+	}
+}
+
 func Benchmark_IntStrMap_Get_Max_Size_Upper_Bound(b *testing.B) {
 	intStrMap := new(IntStrMap)
 
