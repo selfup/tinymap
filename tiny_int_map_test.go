@@ -18,7 +18,7 @@ func Test_IntMap_Get(t *testing.T) {
 	}
 }
 
-func Benchmark_IntMap_Get_Single_Lower_Bound(b *testing.B) {
+func Benchmark_IntMap_Get_Lower_Bound(b *testing.B) {
 	intMap := new(IntMap)
 
 	intMap.Set(42, 9000)
@@ -28,7 +28,7 @@ func Benchmark_IntMap_Get_Single_Lower_Bound(b *testing.B) {
 	}
 }
 
-func Benchmark_IntMap_Get_Expected_Size_Of_Five_Upper_Bound(b *testing.B) {
+func Benchmark_IntMap_Get_Expected_Bound(b *testing.B) {
 	intMap := new(IntMap)
 
 	intMap.Set(0, 8996)
@@ -42,7 +42,7 @@ func Benchmark_IntMap_Get_Expected_Size_Of_Five_Upper_Bound(b *testing.B) {
 	}
 }
 
-func Benchmark_IntMap_Get_Max_Size_Upper_Bound(b *testing.B) {
+func Benchmark_IntMap_Get_Upper_Bound(b *testing.B) {
 	intMap := new(IntMap)
 
 	upperBound := 100
