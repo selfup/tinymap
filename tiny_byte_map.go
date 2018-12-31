@@ -58,6 +58,8 @@ func (t *ByteMap) Set(key []byte, val []byte) {
 			ByteTuple.Val = val
 
 			t.Data[i] = ByteTuple
+
+			return
 		}
 	}
 

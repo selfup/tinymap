@@ -7,7 +7,7 @@ import (
 func Test_StrMap_Get(t *testing.T) {
 	strMap := new(StrMap)
 
-	result, err := strMap.Get("a")
+	result, err := strMap.Get("foo")
 
 	if result != "" {
 		t.Errorf("failed to return string default")
@@ -15,6 +15,18 @@ func Test_StrMap_Get(t *testing.T) {
 
 	if err == nil {
 		t.Errorf("Get without known key should have failed")
+	}
+}
+
+func Test_StrMap_Set(t *testing.T) {
+	strMap := new(StrMap)
+
+	strMap.Set("foo", "bar")
+
+	result, _ := strMap.Get("foo")
+
+	if result != "bar" {
+		t.Errorf("failed to return correct Val from StrTuple")
 	}
 }
 
@@ -56,5 +68,39 @@ func Benchmark_StrMap_Get_Upper_Bound(b *testing.B) {
 
 	for n := 0; n < b.N; n++ {
 		strMap.Get(upperBoundStr)
+	}
+}
+
+func Benchmark_StrMap_Set_Upper_Bound(b *testing.B) {
+	strMap := new(StrMap)
+
+	for i := 0; i < b.N; i++ {
+		val := string(i)
+
+		if i < 100 {
+			strMap.Set(val, val)
+		} else {
+			strMap.Set("1", val)
+		}
+	}
+}
+
+func Benchmark_StrMap_Delete_Upper_Bound(b *testing.B) {
+	strMap := new(StrMap)
+
+	for i := 0; i < 100; i++ {
+		val := string(i)
+
+		strMap.Set(val, val)
+	}
+
+	for i := 0; i < b.N; i++ {
+		val := string(i)
+
+		if i < 100 {
+			strMap.Delete(val)
+		} else {
+			strMap.Delete("1")
+		}
 	}
 }

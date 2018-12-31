@@ -51,22 +51,20 @@ func (t IntMap) Get(key int) (int, error) {
 // Set will update or add Tuples.
 // If IntTuple.Key already exists, only the IntTuple.Val is updated.
 // Otherwise a new IntTuple is inserted into the Data slice.
-func (t *IntMap) Set(key int, val int) bool {
+func (t *IntMap) Set(key int, val int) {
 	for i, IntTuple := range t.Data {
 		if IntTuple.Key == key {
 			IntTuple.Val = val
 
 			t.Data[i] = IntTuple
 
-			return true
+			return
 		}
 	}
 
-	IntTuple := IntTuple{Key: key, Val: val}
+	intTuple := IntTuple{Key: key, Val: val}
 
-	t.Data = append(t.Data, IntTuple)
-
-	return true
+	t.Data = append(t.Data, intTuple)
 }
 
 // Delete removes Tuples.

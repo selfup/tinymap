@@ -1,6 +1,7 @@
 package tinymap
 
 import (
+	"bytes"
 	"testing"
 )
 
@@ -11,6 +12,21 @@ func Test_byteMap_Get(t *testing.T) {
 
 	if err == nil {
 		t.Errorf("Get without known key should have failed")
+	}
+}
+
+func Test_ByteMap_Set(t *testing.T) {
+	byteMap := new(ByteMap)
+
+	key := []byte("42")
+	val := []byte("9000")
+
+	byteMap.Set(key, val)
+
+	result, _ := byteMap.Get(key)
+
+	if !bytes.Equal(result, val) {
+		t.Errorf("failed to return correct Val from StrTuple")
 	}
 }
 
@@ -53,5 +69,39 @@ func Benchmark_ByteMap_Get_Upper_Bound(b *testing.B) {
 
 	for n := 0; n < b.N; n++ {
 		byteMap.Get(upperBoundByte)
+	}
+}
+
+func Benchmark_ByteMap_Set_Upper_Bound(b *testing.B) {
+	byteMap := new(ByteMap)
+
+	for i := 0; i < b.N; i++ {
+		val := []byte(string(i))
+
+		if i < 100 {
+			byteMap.Set(val, val)
+		} else {
+			byteMap.Set([]byte("1"), val)
+		}
+	}
+}
+
+func Benchmark_ByteMap_Delete_Upper_Bound(b *testing.B) {
+	byteMap := new(ByteMap)
+
+	for i := 0; i < 100; i++ {
+		val := []byte(string(i))
+
+		byteMap.Set(val, val)
+	}
+
+	for i := 0; i < b.N; i++ {
+		val := []byte(string(i))
+
+		if i < 100 {
+			byteMap.Delete(val)
+		} else {
+			byteMap.Delete(val)
+		}
 	}
 }

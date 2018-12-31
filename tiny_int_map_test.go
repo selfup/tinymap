@@ -18,6 +18,18 @@ func Test_IntMap_Get(t *testing.T) {
 	}
 }
 
+func Test_IntMap_Set(t *testing.T) {
+	intMap := new(IntMap)
+
+	intMap.Set(42, 9000)
+
+	result, _ := intMap.Get(42)
+
+	if result != 9000 {
+		t.Errorf("failed to return correct Val from StrTuple")
+	}
+}
+
 func Benchmark_IntMap_Get_Lower_Bound(b *testing.B) {
 	intMap := new(IntMap)
 
@@ -55,5 +67,33 @@ func Benchmark_IntMap_Get_Upper_Bound(b *testing.B) {
 
 	for n := 0; n < b.N; n++ {
 		intMap.Get(upperBound)
+	}
+}
+
+func Benchmark_IntMap_Set_Upper_Bound(b *testing.B) {
+	intMap := new(IntMap)
+
+	for i := 0; i < b.N; i++ {
+		if i < 100 {
+			intMap.Set(i, i)
+		} else {
+			intMap.Set(1, i)
+		}
+	}
+}
+
+func Benchmark_IntMap_Delete_Upper_Bound(b *testing.B) {
+	intMap := new(IntMap)
+
+	for i := 0; i < 100; i++ {
+		intMap.Set(i, i)
+	}
+
+	for i := 0; i < b.N; i++ {
+		if i < 100 {
+			intMap.Delete(i)
+		} else {
+			intMap.Delete(i)
+		}
 	}
 }
