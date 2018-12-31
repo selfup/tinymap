@@ -19,7 +19,7 @@ type IntTuple struct {
 //
 //  intMap := new(IntMap)
 //  intMap.Set(42, 9000)
-//  val, err := byteMap.Get(42)
+//  val, err := intMap.Get(42)
 //
 //  if err != nil {
 //    log.Fatal(err)

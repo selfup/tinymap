@@ -23,8 +23,16 @@ Just one of the many Maps :smile:
 strMap := new(StrMap)
 
 strMap.Set("foo", "bar")
-strMap.Get("foo")
-strMap.Delete("foo")
+
+val, err := strMap.Get("foo")
+
+if err != nil {
+  log.Fatal(err)
+}
+
+fmt.Print(val)
+
+strMap.Delete(42)
 ```
 
 ### Benchmarks
