@@ -23,7 +23,7 @@ type ByteTuple struct {
 //  val, err := byteMap.Get([]byte("42"))
 //
 //  if err != nil {
-//    log.Fatal(err)
+//    log.Print(err)
 //  }
 //
 //  fmt.Print(val)

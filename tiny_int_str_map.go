@@ -22,7 +22,7 @@ type IntStrTuple struct {
 //  val, err := intStrMap.Get(42)
 //
 //  if err != nil {
-//    log.Fatal(err)
+//    log.Print(err)
 //  }
 //
 //  fmt.Print(val)

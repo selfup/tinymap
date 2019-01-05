@@ -22,7 +22,7 @@ type StrByteTuple struct {
 //  val, err := strByteMap.Get("foo")
 //
 //  if err != nil {
-//    log.Fatal(err)
+//    log.Print(err)
 //  }
 //
 //  fmt.Print(val)
