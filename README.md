@@ -32,7 +32,7 @@ if err != nil {
 
 fmt.Print(val)
 
-strMap.Delete(42)
+strMap.Delete("foo")
 ```
 
 ### Benchmarks

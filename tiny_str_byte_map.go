@@ -27,7 +27,7 @@ type StrByteTuple struct {
 //
 //  fmt.Print(val)
 //
-//  strByteMap.Delete(42)
+//  strByteMap.Delete("foo")
 type StrByteMap struct {
 	// Data is public but use carefully :)
 	Data []StrByteTuple
